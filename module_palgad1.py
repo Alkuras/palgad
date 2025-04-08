@@ -1,6 +1,9 @@
 
 
 
+
+
+
 p=[]
 i=[]
 def add_peson(p:list,i:list):
@@ -145,40 +148,109 @@ def find_wage(p:list,i:list):
     except:
         print("Kirjuta ainult tätede kasutades")
 
-# def more_wage(p:list,i:list):
-#     """Shows people that are getting more/less than inputed wage
-#      :p, list:  wage list:
-#     :i, list:  people list:
-#     """
-#     losti=[]
-#     lostp=[]
-   
-#     try:
-#         märk=input("Kirjuta kas suurem (>) või väiksem (<): ")
-#         if märk=="<":
-#             palk=float(input("Kirjuta palga: "))
-#             if palk >0:
-#                 for o in range(p):
-#                     if palk>int(p[o]):
-#                         s=int(p[o])
-#                         losti.append(i[o])
-#                         lostp.append(s)
-#         elif märk==">":
-#             palk=float(input("Kirjuta palga: "))
-#             if palk >0:
-#                 for o in range(p):
-#                     if palk<int(p[o]):
-                        
-#                         losti.append(i[o])
-#                         lostp.append(int(p[o]))
+def tax_wage(p:list,i:list):
+    """Shows wage after taxes
+     :p, list:  wage list:
+        :i, list:  people list:
+        """
+    name=input("Sisesta nimi, kelle palga maksuga tahate vaadata: ")
+    try:
+        if name.isalpha():
+            k=i.count(name)
+            if k>0:
+                for j in range(k):
+
+                    ind=i.index(name)
+                    notax=float(p[ind])
+                    tax=notax-(notax*0.2)
+                    print(i[ind])
+                    print(f"Maksuga saab:{tax}")
+                    
+
+                    
+                else:
+                    print("Andmed puuduvad ")
+    except:
+        print("Kirjuta ainult tätede kasutades")
 
 
-#     except Exception as e:
-#          print ("Viga:",e)
-#     print(losti)
-#     print(lostp)
 
-   
+
+
+def top(p:list,i:list):
+ """Function shows top n "rich" people and n "poor" people
+    :p, list:  wage list:
+    :i, list:  people list:
+    """
+ try:
+     T=int(input("Kirjutate palju rikkamad ja vaesemad inmesi tahate näha: "))
+     if T>0:
+
+         a=0 
+         pal=p.copy()
+         pal.sort()
+         nam=[]
+         for l in p:
+       
+                ind=p.index(pal[a])
+
+                nam.append(i[ind])
+                a+=1
+         print("Vaesemad ")
+         for s in range(T):
+             print(nam[s])
+         a=0 
+         pal=p.copy()
+         pal.sort(reverse=True)
+         nam=[]
+         for l in p:
+       
+                ind=p.index(pal[a])
+
+                nam.append(i[ind])
+                a+=1
+ 
+         print("Rikkamad")
+         for x in range(T):
+
+            print(nam[x])
+     else:
+        print("Kirjuta numbri")
+ except:
+     print("Viga!")
+
+def name_sort(p:list,i:list):
+        """Sorts names list A-Z or Z-A
+        :p, list:  wage list:
+        :i, list:  people list:
+        """
+        soov=int(input("Kui tahate sorteerida A-Z - sisestate 1\nKui soovite sorteerida Z-A - sisestage 2\n"))
+        if soov==1 or soov==2:
+            if soov==1:
+                a=0 
+                ini=i.copy()
+                ini.sort()
+                wag=[]
+                for l in p:
+       
+                    ind=i.index(ini[a])
+
+                    wag.append(p[ind])
+                    a+=1
+            elif soov==2:
+                a=0 
+                ini=i.copy()
+                ini.sort(reverse=True)
+                wag=[]
+                for l in p:
+       
+                    ind=i.index(ini[a])
+
+                    wag.append(p[ind])
+                    a+=1
+        print("Nimed A-Z")
+        print(ini)
+        print(wag)
 
 
 

@@ -9,28 +9,35 @@ while True:
     print("Andmed: ")
     print(inimesed)
     print(palgad)
-    print("Vajua:\n1-Andmete lisamiseks\n2-Andmete kustutamiseks nime järgi\n3-Maksimaalse palka saaja näitamiseks}\n4-Väiksema palga näitamiseks\n5-Sorteerida listid kahanevas ja kasvavas järjekorras\n6-\n7-Palgaotsing nime järgi\n8-Inimesed kes saavad palga suurem või väiksem kui valitud palg")
+    print("Vajua:\n1-Andmete lisamiseks\n2-Andmete kustutamiseks nime järgi\n3-Maksimaalse palka saaja näitamiseks}\n4-Väiksema palga näitamiseks\n5-Sorteerida listid kahanevas ja kasvavas järjekorras\n6-Vaadata kui palju võrdsa palga saajaid on\n7-Palgaotsing nime järgi\n8-Vaadata kui palju inimene saab tulumaksuga\n9-Koostada top rikkamad ja vaesemad\n10-Sorteerida kas A-Z või Z-A\n0-Quit")
     v=int(input())
     if v==1:
          k=int(input("Palju inimesi soovite lisada? "))
          if k>0:
             for l in range(0,k):
                add_peson(palgad,inimesed)
-    if v==2:
+    elif v==2:
         k=int(input("Palju inimesi soovite kustutada ?"))
         if k>0:
             for l in range(k):
                 del_person(palgad,inimesed)
-    if v==3:
+    elif v==3:
         max_wage(palgad,inimesed)
-    if v==4:
+    elif v==4:
         min_wage(palgad,inimesed)
-    if v==5:
+    elif v==5:
         sort_wage(palgad,inimesed)
-    if v==6:
-        print(2)
-    if v==7:
+    elif v==6:
+        equal_wage(palgad,inimesed)
+    elif v==7:
         find_wage(palgad,inimesed)
-    if v==8:
-        more_wage(palgad,inimesed)
-
+    elif v==8:
+       tax_wage(palgad,inimesed)
+    elif v==9:
+        top(palgad,inimesed)
+    elif v==10:
+        name_sort(palgad,inimesed)
+    elif v==0:
+        break
+    else:
+        print("Numbrid 0-10")
