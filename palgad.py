@@ -1,8 +1,8 @@
 from module_palgad1 import *
 
 
-palgad=[1200,2500,750,395,1200]
-inimesed=["A","B","C","D","E"]
+palgad=[1200,2500,750,395,1200,750]
+inimesed=["A","B","C","D","E","A"]
 
 
 while True:

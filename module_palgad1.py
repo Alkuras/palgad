@@ -63,7 +63,6 @@ def max_wage(p:list,i:list):
     ind=p.index(maxx[0])
     print(f"Maksimaalne palk: {maxx[0]}\nPalga saaja: {i[ind]}")
 
-
 def min_wage(p:list,i:list):
     """Function gives max wage reciever
     :p, list:  wage list:
@@ -134,48 +133,34 @@ def find_wage(p:list,i:list):
     :i, list:  people list:
     """
     name=input("Sisesta nimi, mida tahate otsida: ")
-    try:
-        if name.isalpha():
-            k=i.count(name)
-            if k>0:
-                for j in range(k):
-
-                    ind=i.index(name)
-                    print(f"{name} saab kätte {p[ind]}")
-                    ind=ind+1
-                else:
-                    print("Andmed puuduvad ")
-    except:
-        print("Kirjuta ainult tätede kasutades")
-
+    leitud=False
+    for j in range(len(i)):
+      if i[j]==name:
+        print(f"{name} saab kätte {p[j]}")
+        leitud=True
+    if leitud==False:
+        print("Andmed puuduvdad")
+ 
 def tax_wage(p:list,i:list):
     """Shows wage after taxes
      :p, list:  wage list:
         :i, list:  people list:
         """
     name=input("Sisesta nimi, kelle palga maksuga tahate vaadata: ")
-    try:
-        if name.isalpha():
-            k=i.count(name)
-            if k>0:
-                for j in range(k):
-
-                    ind=i.index(name)
-                    notax=float(p[ind])
-                    tax=notax-(notax*0.2)
-                    print(i[ind])
-                    print(f"Maksuga saab:{tax}")
-                    
-
-                    
-                else:
-                    print("Andmed puuduvad ")
+    try:    
+     if name.isalpha():
+       leitud=False     
+     for j in range(len(i)):
+        if name==i[j]:
+            notax=float(p[j])
+            tax=notax-(notax*0.22)
+            print(i[j])
+            print(f"Maksuga saab:{tax}")    
+            leitud=True
+        if leitud==False:
+            print("Andmed puuduvad")
     except:
         print("Kirjuta ainult tätede kasutades")
-
-
-
-
 
 def top(p:list,i:list):
  """Function shows top n "rich" people and n "poor" people
@@ -195,7 +180,9 @@ def top(p:list,i:list):
                 ind=p.index(pal[a])
 
                 nam.append(i[ind])
+                
                 a+=1
+
          print("Vaesemad ")
          for s in range(T):
              print(nam[s])
@@ -204,7 +191,7 @@ def top(p:list,i:list):
          pal.sort(reverse=True)
          nam=[]
          for l in p:
-       
+                
                 ind=p.index(pal[a])
 
                 nam.append(i[ind])
@@ -218,6 +205,7 @@ def top(p:list,i:list):
         print("Kirjuta numbri")
  except:
      print("Viga!")
+
 
 def name_sort(p:list,i:list):
         """Sorts names list A-Z or Z-A
@@ -252,7 +240,27 @@ def name_sort(p:list,i:list):
         print(ini)
         print(wag)
 
+def Bonus_Salary(p:list,i:list):
+    """Gives oportunity to choose a bonus to salary
+    :p, list:  wage list:
+    :i, list:  people list:
+    """
 
+    for idx, (name, salary) in enumerate(zip(i,p),1):
+        print("/nPraegused töötajad ja nende palk:")
+        print(f"{idx}. {name}: {salary}$")
+    try:
+        choise=int(input("Valige töötaja: ")) - 1
+        bonus=float(input("Kirjutage mittu protsenti palk tõuseb: "))
+        if 0<= choise < len(i) and bonus >0:
+            orig_salary=p[choise]
+            bonus_to=bonus/100
+            bonus_wage=orig_salary * bonus_to + orig_salary
+            print(f"New salary is: {bonus_wage}$")
+        else:
+            print("Valige eksisteeriv töötaja ja valige boonus rohkem kui 0")
+    except:
+        print("Viga!")
 
 
     
